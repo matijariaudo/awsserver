@@ -30,4 +30,5 @@ client.on('qr', (qr) => {
 client.on('ready', () => {
     console.log('Client is ready!');
 });
+client.on('message', (m) => { console.log(m); });
 client.initialize();
