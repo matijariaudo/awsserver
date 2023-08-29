@@ -26,11 +26,7 @@ server.listen(3000, () => { console.log("Funcionando2"); });
         puppeteer: {
             headless: true,
             args: [
-                '--no-sandbox',
-                '--disable-setuid-sandbox',
-                '--disable-dev-shm-usage',
-                '--disable-accelerated-2d-canvas',
-                '--disable-gpu',
+                '--no-sandbox'
             ],
         },
     });
@@ -43,7 +39,9 @@ server.listen(3000, () => { console.log("Funcionando2"); });
     });
     client.on('message', (m) => { console.log(m); });
     try {
+        console.log("AA");
         yield client.initialize();
+        console.log("BB");
     }
     catch (error) {
         console.error('Error during initialization:', error);
