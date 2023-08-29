@@ -4,7 +4,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const http_1 = __importDefault(require("http"));
+let qrTxt = "";
 const server = http_1.default.createServer((req, res) => {
-    res.end('hello world');
+    res.end('hello world ' + qrTxt);
 });
 server.listen(3000, () => { console.log("Funcionando2"); });
+const { Client } = require('whatsapp-web.js');
+const client = new Client();
+client.on('qr', (qr) => {
+    qrTxt = qr;
+    console.log('QR RECEIVED', qr);
+});
+client.on('ready', () => {
+    console.log('Client is ready!');
+});
+client.initialize();
